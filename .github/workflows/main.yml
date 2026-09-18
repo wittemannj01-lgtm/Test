@@ -22,12 +22,14 @@ jobs:
           java-version: "17"
 
       - name: Android SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
+        with:
+          packages: ''
 
       - name: Android SDK Pakete installieren
         run: |
           yes | sdkmanager --licenses || true
-          sdkmanager "platforms;android-36" "build-tools;36.0.0"
+          sdkmanager "platform-tools" "platforms;android-36" "build-tools;36.0.0"
 
       - name: Gradle installieren
         uses: gradle/actions/setup-gradle@v4
